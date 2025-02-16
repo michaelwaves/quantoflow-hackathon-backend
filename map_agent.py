@@ -47,7 +47,8 @@ def get_location_context_and_compliance_check(location, business_flow, fund_type
         )
         
         # Use DuckDuckGo to search for relevant information about the location
-        agent.print_response(search_query, stream=True)
+        #agent.print_response(search_query, stream=True)
+        search_result = agent.run(search_query)
         
         # Now check if a 1 million dollar flow makes sense for the area (money laundering context)
         # Add the fund type to the compliance question
@@ -65,19 +66,27 @@ def get_location_context_and_compliance_check(location, business_flow, fund_type
         )
         
         # Get compliance review response
-        agent.print_response(compliance_question, stream=True)
+        compliance_result = agent.run(compliance_question)
+
+        return {
+            "compliance":compliance_result,
+            "search":search_result
+        }
     else:
         print("Location not found. Please check the input.")
+        return{
+            "message":"Location Not found"
+        }
 
 # Define the agent with a basic setup (not involved in map retrieval but for reference)
 def search_location_info(location_name, business_flow, fund_type):
     # Use geopy to get the location info based on name
     get_location_context_and_compliance_check(location_name, business_flow, fund_type)
 
-# Prompt the user to input the name of the location, business flow, and fund type
+""" # Prompt the user to input the name of the location, business flow, and fund type
 location_name = input("Enter the location or place you want to find context for: ")
 business_flow = float(input("Enter the business flow amount (e.g., 1000000 for 1 million dollars): "))
 fund_type = input("Enter the fund type (credit, debit, bitcoin exchange, etc.): ").lower()
 
 # Run the function to search for the location, context, and compliance check
-search_location_info(location_name, business_flow, fund_type)
+search_location_info(location_name, business_flow, fund_type) """

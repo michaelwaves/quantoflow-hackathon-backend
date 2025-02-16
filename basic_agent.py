@@ -21,10 +21,15 @@ def search_adverse_media(person_name):
     search_query = f"adverse media on {person_name} OR 'controversy' OR 'scandal' OR 'legal issues' OR 'criminal' OR 'fraud'"
 
     # Use the agent to search for adverse media related to the person
-    agent.print_response(search_query, stream=True)
+    response = agent.run(search_query)
+    return response
 
-# Prompt the user to input the name of the person they want to search for
+
+    
+
+""" # Prompt the user to input the name of the person they want to search for
 person_name = input("Enter the name of the person or business you want to find adverse media for: ")
 
 # Run the search function for adverse media coverage
 search_adverse_media(person_name)
+ """
