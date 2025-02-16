@@ -68,7 +68,7 @@ def get_location_context(location):
 def search_location_info(location_name):
     # Use geopy to get the location info based on name
     result = get_location_context(location_name)
-    
+    return result
     # Output the result
     print("Location Information:", result)
 

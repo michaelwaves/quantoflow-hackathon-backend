@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from  basic_agent import search_adverse_media
-from map_agent import search_location_info
+from map_api import search_location_info
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -24,8 +24,8 @@ def adverse_media_search(entity):
     return search_adverse_media(entity)
 
 @app.get("/search_location_info")
-def location_search(location_name, business_flow, fund_type):
-    return search_location_info(location_name,business_flow,fund_type)
+def location_search(address):
+    return search_location_info(address)
 
 
 if __name__ =="__main__":
