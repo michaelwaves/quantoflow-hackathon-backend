@@ -71,9 +71,10 @@ def search_location_info(location_name):
     return result
     # Output the result
     print("Location Information:", result)
-
+"""
 # Assign a fixed location value
 location_name = "New York City"  # Example location
 
 # Run the function to search for the location context
 search_location_info(location_name)
+ """
